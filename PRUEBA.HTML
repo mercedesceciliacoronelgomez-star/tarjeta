@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tarjeta Digital - Mercedes Coronel</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-card: #0a0a0a;
+            --bg-body: #000000;
+            --primary-color: #1a1a1a;
+            --text-main: #ffffff !important; /* Forzado para que no sea transparente */
+            --text-muted: #aaaaaa;
+            --accent-border: rgba(255, 255, 255, 0.15);
+            --bg-info-box: #ffffff;
+            --text-info-box: #333333;
+        }
+
+        /* Reset básico para asegurar que nada sea transparente */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000 !important; /* Fondo negro sólido */
+            color: #ffffff !important;
+            margin: 0;
+            padding: 0;
+            display: block;
+            min-height: 100vh;
+            padding-bottom: 120px;
+        }
+
+        .card {
+            background-color: #0a0a0a !important;
+            max-width: 450px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.05);
+        }
+
+        /* --- 1. ENCABEZADO --- */
+        .card-header-overlay {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background-image: url('https://i.ibb.co/C5cvzHXM/Whats-App-Image-2026-04-06-at-14-19-30.jpg'); 
+            background-size: cover;
+            background-position: center top;
+            background-color: #111; /* Color de respaldo si la imagen falla */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .header-overlay-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            background: linear-gradient(to top, rgba(10, 10, 10, 1) 15%, rgba(10, 10, 10, 0.7) 45%, rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+        }
+
+        .header-text-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .logo-studio {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background-color: white;
+            padding: 4px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .pro-name-overlay {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffffff !important;
+            margin: 0;
+        }
+
+        /* --- 2. BOTONES REDONDOS --- */
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-decoration: none;
+            color: #ffffff !important;
+            font-size: 1.4rem;
+        }
+
+        /* --- 3. CONTACTO ESCRITO --- */
+        .contact-text-section {
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-text-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+
+        .contact-text-item i {
+            color: #aaaaaa;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* --- 4. INFO CAJA BLANCA --- */
+        .info-written-section {
+            padding: 0 15px;
+        }
+
+        .written-info-box {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .written-info-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: #000000 !important;
+        }
+
+        .written-info-box p {
+            margin: 0;
+            color: #444444 !important;
+        }
+
+        /* --- 5. REDES SOCIALES --- */
+        .social-media-section {
+            padding: 0 15px 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #ffffff !important;
+        }
+
+        /* --- 6. SECCIÓN FINAL --- */
+        .qr-share-section {
+            background-color: #fcfcfc !important;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 0 15px 20px;
+        }
+
+        .qr-extra-info {
+            font-size: 0.85rem;
+            color: #333333 !important;
+            line-height: 1.5;
+        }
+
+        /* --- BOTONES FIJOS --- */
+        .share-floating-circle {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .floating-footer {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            width: 92%;
+            max-width: 400px;
+            z-index: 1000;
+        }
+
+        .btn-footer {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header-overlay">
+            <div class="header-overlay-gradient"></div> 
+            <div class="header-text-container">
+                <img src="https://i.ibb.co/zV4Mzh9x/logo-estudio.jpg" alt="Logo" class="logo-studio">
+                <p class="pro-name-overlay">Mercedes Coronel</p>
+                <p class="pro-headline-overlay" style="color:white">Abogada</p>
+                <p class="company-headline-overlay" style="color:#aaa">Estudio Jurídico Chiluiza Coronel</p>
+            </div>
+        </div>
+
+        <div class="contact-actions">
+            <a href="tel:0969991424" class="btn"><i class="fas fa-phone"></i></a>
+            <a href="mailto:mcoronel25@hotmail.com" class="btn"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/593969991424" class="btn"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="btn"><i class="fas fa-globe"></i></a>
+        </div>
+
+        <div class="contact-text-section">
+            <div class="contact-text-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>0969991424</span>
+            </div>
+            <div class="contact-text-item">
+                <i class="fab fa-whatsapp"></i>
+                <span>0969991424</span>
+            </div>
+            <div class="contact-text-item">
+                <i class="fas fa-envelope"></i>
+                <span>mcoronel25@hotmail.com</span>
+            </div>
+        </div>
+
+        <div class="info-written-section">
+            <div class="written-info-box">
+                <h3>Abogada de los Tribunales y Juzgado de la República del Ecuador.</h3>
+                <p>Abogada dedicada a proceso judiciales de Familia, laboral, civil, violencia intrafamiliar.</p>
+            </div>
+        </div>
+
+        <div class="social-media-section">
+            <a href="https://instagram.com/estudiojuridicochiluizacoronel" class="social-link" target="_blank">
+                <span><i class="fab fa-instagram" style="color:#E1306C"></i> Instagram</span>
+                <span>➜</span>
+            </a>
+            <a href="https://www.tiktok.com/@estudiojuridicochiluizacoronel" class="social-link" target="_blank">
+                <span><i class="fab fa-tiktok"></i> TikTok</span>
+                <span>➜</span>
+            </a>
+        </div>
+
+        <div class="qr-share-section">
+            <h2 style="color: #333 !important; font-size: 1.3rem; margin: 0 0 10px 0;">CONTÁCTANOS</h2>
+            <div class="qr-extra-info">
+                <strong>Tel:</strong> +593 096 999 1424<br>
+                <strong>Email:</strong> mcoronel25@hotmail.com<br>
+                <strong>Dirección:</strong> Guayaquil, Ecuador
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="share-floating-circle">
+        <i class="fas fa-share-alt"></i>
+    </a>
+
+    <div class="floating-footer">
+        <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Mercedes%20Coronel%0ATEL;TYPE=CELL:0969991424%0AEMAIL:mcoronel25@hotmail.com%0AEND:VCARD" download="MercedesCoronel.vcf" class="btn-footer">
+            <i class="fas fa-user-plus"></i> GUARDAR
+        </a>
+        <a href="#" class="btn-footer">
+            <i class="fas fa-qrcode"></i> MI QR
+        </a>
+    </div>
+
+</body>
+</html>
